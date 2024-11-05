@@ -6,7 +6,7 @@ const { derivePath } = require("ed25519-hd-key");
 /**
  * Wallet class for creating and managing Solana wallets.
  */
-class Wallet {
+export class Wallet {
   constructor() {
     // Default values for properties
     this._derivedPath = null;
@@ -14,7 +14,13 @@ class Wallet {
     this._seed = null;
     this._seedHex = null;
     this._keypair = null;
-    this._derivationPaths = {}; // Will be initialized in the factory
+
+    // Define standard derivation paths for wallet creation
+    this._derivationPaths = {
+      deprecated: `m/501'/0'/0/0`,
+      bip44: `m/44'/501'/0'`,
+      bip44Change: `m/44'/501'/0'/0'`,
+    };
   }
 
   /**
