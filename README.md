@@ -4,7 +4,6 @@ Welcome to the **solana_token** npm package, a comprehensive library designed to
 
 ## Table of Contents
 
-(#table-of-contents)
 - [Solana Token - A JavaScript Library for Solana SPL Token Management](#solana-token---a-javascript-library-for-solana-spl-token-management)
   - [Table of Contents](#table-of-contents)
 - [Installation](#installation)
