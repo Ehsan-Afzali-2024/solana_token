@@ -36,7 +36,7 @@ This package provides utility methods to interact with Solana\'s SPL token ecosy
 To use this package, simply import it into your JavaScript application:
 
 ```js
-const { Spl, Wallet } = require("solana_token");
+const { splFactory, Spl, walletFactory, Wallet } = require("solana_token");
 ```
 
 ## Wallet Management
