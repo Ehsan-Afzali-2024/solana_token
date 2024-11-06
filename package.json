@@ -1,11 +1,9 @@
 {
-  "name": "solana-wallet",
+  "name": "solana_token",
   "version": "1.0.0",
-  "description": "A wallet implementation for Solana blockchain.",
+  "description": "A JavaScript Library for Solana SPL Token Management",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"No tests specified\" && exit 0"
-  },
+  "scripts": {},
   "keywords": [
     "solana",
     "token",
