@@ -92,13 +92,13 @@ Here’s an example of how to use the solana_token package with an Express.js ap
 ```js
 const express = require("express");
 const router = express.Router();
-const { Spl, Wallet } = require("solana_token");
+const { splFactory, Spl, walletFactory, Wallet } = require("solana_token");
 const { PublicKey } = require("@solana/web3.js");
 
 router.get("/", async (req, res) => {
-  const w1 = Wallet.restoreFromMnemonic("your mnemonic here");
-  const w2 = Wallet.restoreFromMnemonic("another mnemonic here");
-  const s = new Spl().connect("devnet");
+  const w1 = walletFactory.restoreFromMnemonic("your mnemonic here");
+  const w2 = walletFactory.restoreFromMnemonic("another mnemonic here");
+  const s = splFactory.create(splFactory.clusters().dev);
 
   // Airdrop some SOL to the wallets
   await s.getSomeSol(w1);
@@ -110,17 +110,17 @@ router.get("/", async (req, res) => {
 
   // Token actions began
   const tokenPublicKey = new PublicKey("your_token_address_here");
-  const tai1 = await s.getOrCreateTokenAccount(w1, tokenPublicKey);
-  const tai2 = await s.getOrCreateTokenAccount(w2, tokenPublicKey);
+  const account1 = await s.getOrCreateTokenAccount(w1, tokenPublicKey);
+  const account2 = await s.getOrCreateTokenAccount(w2, tokenPublicKey);
 
   // Transfer tokens
-  await s.transferToken(tokenPublicKey, w1, w2, amount);
+  await s.transferToken(tokenPublicKey, w1, w2, "0.1");
 
   res.send({
     w1Balance: w1Balance,
     w2Balance: w2Balance,
-    tai1: tai1.tokenAccountPublicKey.toString(),
-    tai2: tai2.tokenAccountPublicKey.toString(),
+    account1: account1.tokenAccountPublicKey.toString(),
+    account2: account2.tokenAccountPublicKey.toString(),
   });
 });
 

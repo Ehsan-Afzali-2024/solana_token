@@ -6,7 +6,7 @@ const { derivePath } = require("ed25519-hd-key");
 /**
  * Wallet class for creating and managing Solana wallets.
  */
-export class Wallet {
+class Wallet {
   constructor() {
     // Default values for properties
     this._derivedPath = null;
@@ -262,4 +262,4 @@ class WalletFactory {
 }
 
 // Exporting a singleton instance of the WalletFactory
-module.exports = new WalletFactory();
+module.exports = {Wallet, walletFactory: new WalletFactory()};

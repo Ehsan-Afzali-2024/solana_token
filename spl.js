@@ -1618,7 +1618,7 @@ class SplFactory {
   }
 }
 
-module.exports = new SplFactory();
+module.exports = {Spl, splFactory: new SplFactory()};
 
 // Solana spl token registery
 // Example:
